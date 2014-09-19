@@ -13,6 +13,7 @@ Tasks:
 * interval:
 * attempted: number of times attempted to run
 * completed: number of times completed run
+* errors: attempted = completed + errors + "pending"
 * xxxxxxxhasRun: returns true if it has run at least once
 
   New Signature:
