@@ -11,7 +11,9 @@ Tasks:
 * tag: defaults to arguments.caller.toString()
 * firstInvTime: time of first invocation
 * interval:
-* hasRun: returns true if it has run at least once
+* attempted: number of times attempted to run
+* completed: number of times completed run
+* xxxxxxxhasRun: returns true if it has run at least once
 
   New Signature:
 * setTimeout(interval, handler, owner, manager), with the new arguments being optional
