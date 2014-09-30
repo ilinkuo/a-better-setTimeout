@@ -1,0 +1,22 @@
+{
+  "name": "a-better-setTimeout",
+  "version": "0.0.0",
+  "description": "A drop-in replacement for JavaScript's setTimeout and setInterval",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilinkuo/a-better-setTimeout.git"
+  },
+  "keywords": [
+    "setTimeout",
+    "setInterval"
+  ],
+  "author": "Ray Wadkins, I-Lin Kuo, Shruthi Polasani, Adrian Hooper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilinkuo/a-better-setTimeout/issues"
+  }
+}
