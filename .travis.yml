@@ -1,0 +1,1 @@
+script: phantomjs test/jasmine2-junit-master/src/jasmine2-runner.js test/specrunner.html
