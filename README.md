@@ -23,4 +23,14 @@ Considerations
 * Forward compatibility with timeout manager
 * AMD and plain javascript versions
 
+INSTALLATION
+============
+
+Install phantomjs. If you're on windows, make sure you add phantomjs.exe's location to your path.
+
+In the home directory, run the tests by 
+
+	phantomjs test/jasmine2-junit-master/src/jasmine2-runner.js test/specrunner.html
+
+based on the jasmine2 runner at https://github.com/sandermak/jasmine2-junit
 

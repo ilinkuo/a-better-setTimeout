@@ -1,3 +1,4 @@
+/*
 describe('plain suite', function() {
   it('succeeding test in plain suite', function() {
     expect(1).toBe(1);
@@ -32,4 +33,14 @@ describe('second suite (has one nested suite)', function() {
       expect(1).toBe(1);
     });
   });
+});
+*/
+
+describe('setTimeout', function(){
+  it('setTimeout is a function say', function(){
+    expect(typeof setTimeout).toBe('function');
+  });
+  it('setTimeout is loaded', function(){
+    expect(typeof setTimeout.noConflict).toBe('function');
+  })
 });
