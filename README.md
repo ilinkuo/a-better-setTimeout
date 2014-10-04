@@ -1,5 +1,6 @@
 a-better-setTimeout
 ===================
+[![Build Status](https://travis-ci.org/ilinkuo/a-better-setTimeout.svg?branch=master)](https://travis-ci.org/ilinkuo/a-better-setTimeout)
 
 An improved yet backwards compatible drop-in replacement for JavaScript's built-in setTimeout and setInterval methods.
 
@@ -17,7 +18,7 @@ Tasks:
 * xxxxxxxhasRun: returns true if it has run at least once
 
   New Signature:
-* setTimeout(interval, handler, owner, manager), with the new arguments being optional
+* setTimeout(interval, handler, owner/tags, manager), with the new arguments being optional
  
 Considerations
 * Forward compatibility with timeout manager
