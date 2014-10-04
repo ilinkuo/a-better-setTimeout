@@ -1,57 +1,67 @@
-describe('setTimeout', function(){
-  describe('a better setTimeout.noConflict()', function(){
-      it('setTimeout is loaded', function(){
+describe('a better setTimeout', function(){
+  // probably have to test using setTimeout.noConflict()
+  
+  describe('setTimeout.noConflict()', function(){
+      it('is loaded if setTimeout.noConflict exists', function(){
         expect(typeof setTimeout.noConflict).toBe('function');
       });
        
   });
 
-  describe('a better setTimeout is backwards compatible', function(){
+  describe('backwards compatibility of a better setTimeout', function(){
       // 
-      it('setTimeout is a function say', function(){
+      it('a better setTimeout is a function just like the native setTimeout()', function(){
         expect(typeof setTimeout).toBe('function');
       });
+      it('the returned handle can be used in the native clearTimeout()', function(){
+        
+      })
   });
   
 
   
-  describe('a better setTimeout handle.clear()', function(){
+  describe('setTimeout handle.clear()', function(){
     it('setTimeout handle has clear method', function(){
     
     })
   });
 
-  describe('a better setTimeout handle.remove()', function(){
+  describe('setTimeout handle.remove()', function(){
+    // This is for dojo this.own() compatibility
     it('setTimeout handle has remove method', function(){
     
     })
   });
   
-  describe('a better setTimeout handle.called()', function(){
+  describe('setTimeout handle.called()', function(){
     // returns when the setXXX was invoked.
   });
 
-  describe('a better setTimeout handle.type()', function(){
-    
-  });
-
-  describe('a better setTimeout handle.tag()', function(){
-    
-  });
-
-  describe('a better setTimeout handle.firstInvocation()', function(){
+  describe('setTimeout handle.type()', function(){
     
   });
   
-  describe('a better setTimeout handle.interval()', function(){
+  describe('setTimeout signature change', function(){
+    
+  });  
+
+  describe('setTimeout handle.tag()', function(){
     
   });
 
-  describe('a better setTimeout handle.attempted()', function(){
+  describe('setTimeout handle.firstInvocation()', function(){
+    
+  });
+  
+  describe('setTimeout handle.interval()', function(){
     
   });
 
-  describe('a better setTimeout handle.completed()', function(){
+  describe('setTimeout handle.attempted()', function(){
+    
+  });
+
+  describe('setTimeout handle.completed()', function(){
     
   });
   
