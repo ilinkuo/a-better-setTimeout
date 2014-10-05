@@ -18,8 +18,6 @@ describe('a better setTimeout', function(){
       })
   });
   
-
-  
   describe('setTimeout handle.clear()', function(){
     it('setTimeout handle has clear method', function(){
     
@@ -41,7 +39,7 @@ describe('a better setTimeout', function(){
     
   });
   
-  describe('setTimeout signature change', function(){
+  describe('setTimeout signature change with two new optional arguments', function(){
     
   });  
 

@@ -1,4 +1,4 @@
-window.setTimeout = (function(setTimeout, global){
+(function(setTimeout, global){
 	
 	var betterST = function(){
 		setTimeout.call(null,Array.prototype.slice.apply(arguments, 0))
@@ -7,6 +7,8 @@ window.setTimeout = (function(setTimeout, global){
 		global.setTimeout = setTimeout;
 		return betterST;
 	};
-	return betterST;
+	
+	global.setTimeout = betterST;
+
 })(setTimeout, window || global);
 
