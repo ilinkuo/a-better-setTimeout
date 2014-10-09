@@ -36,7 +36,14 @@ describe('a better setTimeout', function(){
   });
 
   describe('setTimeout handle.type()', function(){
-    
+    var handle = setTimeout(function(){}, 0);
+    it('handle has type method', function(){
+      expect(typeof handle.type).toBe('function');
+    });
+  
+    it('returns "timeout" string', function(){
+      expect(handle.type()).toBe('timeout');
+    });
   });
   
   describe('setTimeout signature change with two new optional arguments', function(){

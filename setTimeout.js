@@ -1,7 +1,10 @@
 (function(setTimeout, global) {
 	
 	var betterST = function() {
-		setTimeout.call(null, Array.prototype.slice.apply(arguments, 0));
+		var rawHandle = setTimeout.apply(null, Array.prototype.slice.call(arguments, 0));
+		return {
+			rawHandle : rawHandle
+		};
 	};
 	betterST.noConflict = function(){
 		global.setTimeout = setTimeout;
