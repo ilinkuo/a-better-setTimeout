@@ -4,7 +4,6 @@ describe('a better setTimeout', function(){
   describe('setTimeout.noConflict()', function(){
       it('is loaded if setTimeout.noConflict exists', function(){
         expect(typeof setTimeout.noConflict).toBe('function');
-        throw 'exception'; // testing to see if travis ci picks up this failure.
       });
        
   });
