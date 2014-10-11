@@ -19,15 +19,21 @@ describe('a better setTimeout', function(){
   });
   
   describe('setTimeout handle.clear()', function(){
+    var handle = setTimeout(function(){}, 0);
     it('setTimeout handle has clear method', function(){
-    
+      expect(typeof handle.clear).toBe('function');
+      console.log(handle);
     })
   });
 
   describe('setTimeout handle.remove()', function(){
     // This is for dojo this.own() compatibility
-    it('setTimeout handle has remove method', function(){
-    
+    var handle = setTimeout(function(){}, 0);
+    it('handle has remove method', function(){
+      expect(typeof handle.remove).toBe('function');
+    });
+    it('handle.remove is the same as handle.clear', function(){
+      expect(handle.remove).toBe(handle.clear);
     })
   });
   
