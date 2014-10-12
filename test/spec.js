@@ -1,8 +1,9 @@
 describe('a better setTimeout', function(){
+  var NOOP = function(){};
   // probably have to test using setTimeout.noConflict()
   
   describe('setTimeout.noConflict()', function(){
-      it('is loaded if setTimeout.noConflict exists', function(){
+      it('is used as an indicator of a better setTimeout', function(){
         expect(typeof setTimeout.noConflict).toBe('function');
       });
        
@@ -10,16 +11,16 @@ describe('a better setTimeout', function(){
 
   describe('backwards compatibility of a better setTimeout', function(){
       // 
-      it('a better setTimeout is a function just like the native setTimeout()', function(){
+      it('is a function just like the native setTimeout()', function(){
         expect(typeof setTimeout).toBe('function');
       });
-      it('the returned handle can be used in the native clearTimeout()', function(){
+      it('returns a handle that can be used in the native clearTimeout()', function(){
         
       })
   });
   
   describe('setTimeout handle.clear()', function(){
-    var handle = setTimeout(function(){}, 0);
+    var handle = setTimeout(NOOP, 0);
     it('setTimeout handle has clear method', function(){
       expect(typeof handle.clear).toBe('function');
       console.log(handle);
@@ -28,7 +29,7 @@ describe('a better setTimeout', function(){
 
   describe('setTimeout handle.remove()', function(){
     // This is for dojo this.own() compatibility
-    var handle = setTimeout(function(){}, 0);
+    var handle = setTimeout(NOOP, 0);
     it('handle has remove method', function(){
       expect(typeof handle.remove).toBe('function');
     });
@@ -38,12 +39,21 @@ describe('a better setTimeout', function(){
   });
   
   describe('setTimeout handle.called()', function(){
-    // returns when the setXXX was invoked.
+    var now = new Date().getTime();
+    var handle = setTimeout(NOOP,0);
+    it('should return a number', function(){
+      expect(typeof handle.called()).toBe('number');
+    });
+    it('should be close to the present time', function(){
+      var diff = handle.called() - now;
+      expect(diff).toBeGreaterThan(-1);
+      expect(diff).toBeLessThan(2);
+    });
   });
 
   describe('setTimeout handle.type()', function(){
-    var handle = setTimeout(function(){}, 0);
-    it('handle has type method', function(){
+    var handle = setTimeout(NOOP, 0);
+    it('has type method', function(){
       expect(typeof handle.type).toBe('function');
     });
   
@@ -65,7 +75,10 @@ describe('a better setTimeout', function(){
   });
   
   describe('setTimeout handle.interval()', function(){
-    
+    var handle = setTimeout(NOOP, 15);
+    it('should be the same as the argument', function(){
+      expect(handle.interval()).toBe(15);
+    })
   });
 
   describe('setTimeout handle.attempted()', function(){
