@@ -18,16 +18,16 @@ Tasks:
 * xxxxxxxhasRun: returns true if it has run at least once
 
   New Signature:
-* setTimeout(interval, handler, owner/tags, manager), with the new arguments being optional
+* setTimeout(handler, interval, owner/tags, manager), with the new arguments being optional
  
 Considerations
 * Forward compatibility with timeout manager
-* AMD and plain javascript versions
+* AMD and plain JavaScript versions
 
 INSTALLATION
 ============
 
-Install phantomjs. If you're on windows, make sure you add phantomjs.exe's location to your path.
+Install phantomjs. If you're on Windows, make sure you add phantomjs.exe's location to your path.
 
 In the home directory, run the tests by 
 

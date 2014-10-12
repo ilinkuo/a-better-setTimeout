@@ -8,6 +8,9 @@
 			type: function(){ return "timeout";},
 			rawHandle : rawHandle,
 			clear: function(){ /* functionality to be added */},
+            firstInvocation: function() {
+                /* functionality to be added */
+            },
 			called: function(){
 				return called;
 			},

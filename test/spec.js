@@ -71,7 +71,17 @@ describe('a better setTimeout', function(){
   });
 
   describe('setTimeout handle.firstInvocation()', function(){
-    
+    var handle, startTime = new Date().getTime();
+
+    beforeEach(function(done) {
+        handle = setTimeout(function() {
+            done();
+        }, 500);
+    });
+
+    it('should return when the function was first invoked', function() {
+        expect(handle.firstInvocation()).toBeGreaterThan(startTime);
+    });
   });
   
   describe('setTimeout handle.interval()', function(){
