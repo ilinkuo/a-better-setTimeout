@@ -116,7 +116,20 @@ describe('a better setTimeout', function(){
   });
 
   describe('setTimeout handle.completed()', function(){
-    
+    beforeEach(function(done) {
+        this.handle = betterST(function() {
+            // Wait till the next turn in the JS event loop.
+            setTimeout(function() { done(); }, 0);
+        }, 0);
+    });
+
+    it('is a function that returns the number of times the handler has run', function() {
+        expect(typeof this.handle.completed).toBe('function');
+    });
+
+    it('and should increment immediately after the handler runs', function() {
+        expect(this.handle.completed()).toBe(1);
+    });
   });
   
   describe('a better setTimeout handle.errors()', function(){
