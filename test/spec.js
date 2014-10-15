@@ -98,7 +98,7 @@ describe('a better setTimeout', function() {
 		});
 	});
 
-	describe('setTimeout signature change with two new optional arguments', function() {
+	describe('setTimeout signature change with new optional argument', function() {
 
 	});	
 
