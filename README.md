@@ -18,7 +18,7 @@ Tasks:
 * xxxxxxxhasRun: returns true if it has run at least once
 
   New Signature:
-* setTimeout(handler, interval, owner/tags, manager), with the new arguments being optional
+* setTimeout(handler, [ array of owners/tags ], interval), with the new argument being optional
  
 Considerations
 * Forward compatibility with timeout manager
