@@ -42,6 +42,11 @@
 		return betterST;
 	};
 
+	betterST.yesConflict = function() {
+		global.setTimeout = betterST;
+		return setTimeout;
+	};
+
 	global.setTimeout = betterST;
 
 })(setTimeout, window || global);

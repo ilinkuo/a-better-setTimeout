@@ -1,7 +1,5 @@
 describe('a better setTimeout', function() {
 	var NOOP = function() {};
-	// probably have to test using setTimeout.noConflict()
-	var betterST;
 
 	describe('setTimeout.noConflict()', function() {
 		it('is used as an indicator of a better setTimeout', function() {
@@ -9,15 +7,35 @@ describe('a better setTimeout', function() {
 		});
 
 		it('can be called to restore the native setTimeout', function() {
-			betterST = setTimeout.noConflict();
+			this.betterST = setTimeout.noConflict();
 			expect(typeof setTimeout.noConflict).toBe('undefined');
+		});
+
+        afterEach(function() {
+            if (this.betterST) {
+                this.betterST.yesConflict();
+            }
+        });
+	});
+
+	describe('setTimeout.yesConflict()', function() {
+		it('is used to restore to a better setTimeout', function() {
+			expect(typeof setTimeout.yesConflict).toBe('function');
+		});
+
+		it('can be called to restore a better setTimeout', function() {
+			var betterST = setTimeout.noConflict();
+			expect(typeof setTimeout.yesConflict).toBe('undefined');
+
+            betterST.yesConflict();
+			expect(typeof setTimeout.yesConflict).toBe('function');
 		});
 	});
 
 	describe('backwards compatibility of a better setTimeout', function() {
 		// 
 		it('is a function just like the native setTimeout()', function() {
-			expect(typeof betterST).toBe('function');
+			expect(typeof setTimeout).toBe('function');
 		});
 		it('returns a handle that can be used in the native clearTimeout()', function() {
 
@@ -26,7 +44,7 @@ describe('a better setTimeout', function() {
 
 	describe('setTimeout handle.clear()', function() {
 		beforeEach(function(done) {
-			this.handle = betterST(NOOP, 0);
+			this.handle = setTimeout(NOOP, 0);
 			done();
 		});
 		it('setTimeout handle has clear method', function() {
@@ -38,7 +56,7 @@ describe('a better setTimeout', function() {
 	describe('setTimeout handle.remove()', function() {
 		// This is for dojo this.own() compatibility
 		beforeEach(function(done) {
-			this.handle = betterST(NOOP, 0);
+			this.handle = setTimeout(NOOP, 0);
 			done();
 		});
 		it('handle has remove method', function() {
@@ -51,9 +69,9 @@ describe('a better setTimeout', function() {
 
 	describe('setTimeout handle.called()', function() {
 		beforeEach(function(done) {
-			this.handle = betterST(NOOP, 0);
+			this.handle = setTimeout(NOOP, 0);
 			this.now = new Date().getTime();
-			this.handle = betterST(NOOP,0);
+			this.handle = setTimeout(NOOP,0);
 			done();
 		});
 		it('should return a number', function() {
@@ -68,7 +86,7 @@ describe('a better setTimeout', function() {
 
 	describe('setTimeout handle.type()', function() {
 		beforeEach(function(done) {
-			this.handle = betterST(NOOP, 0);
+			this.handle = setTimeout(NOOP, 0);
 			done();
 		});
 		it('has type method', function() {
@@ -91,7 +109,7 @@ describe('a better setTimeout', function() {
 	describe('setTimeout handle.firstInvocation()', function() {
 		beforeEach(function(done) {
 			this.startTime = new Date().getTime();
-			this.handle = betterST(function() {
+			this.handle = setTimeout(function() {
 				done();
 			}, 500);
 		});
@@ -103,7 +121,7 @@ describe('a better setTimeout', function() {
 
 	describe('setTimeout handle.interval()', function() {
 		beforeEach(function(done) {
-			this.handle = betterST(NOOP, 15);
+			this.handle = setTimeout(NOOP, 15);
 			done();
 		});
 		it('should be the same as the argument', function() {
@@ -117,9 +135,10 @@ describe('a better setTimeout', function() {
 
 	describe('setTimeout handle.completed()', function() {
 		beforeEach(function(done) {
-			this.handle = betterST(function() {
+            var nativeSetTimeout = setTimeout.yesConflict();
+			this.handle = setTimeout(function() {
 				// Wait till the next turn in the JS event loop.
-				setTimeout(function() { done(); }, 0);
+				nativeSetTimeout(function() { done(); }, 0);
 			}, 0);
 		});
 
