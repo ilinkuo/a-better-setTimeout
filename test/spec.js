@@ -162,7 +162,22 @@ describe('a better setTimeout', function() {
 	});
 
 	describe('a better setTimeout handle.errors()', function() {
+		beforeEach(function(done) {
+            var nativeSetTimeout = setTimeout.yesConflict();
+			this.handle = setTimeout(function() {
+				// Wait till the next turn in the JS event loop.
+				nativeSetTimeout(function() { done(); }, 0);
+                foo; // ReferenceError
+			}, 0);
+		});
 
+        it('is a function', function() {
+            expect(typeof this.handle.errors).toBe('function');
+        });
+
+        it('should return the number of times that the handler failed to run', function() {
+            expect(this.handle.errors()).toBe(1);
+        });
 	});
 
 });

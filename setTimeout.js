@@ -32,6 +32,9 @@
 			completed: function() {
 				return completedCount;
 			},
+			errors: function() {
+				return attemptedCount - completedCount;
+			},
 			interval: function() {
 				return interval;
 			}
