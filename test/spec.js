@@ -111,7 +111,7 @@ describe('a better setTimeout', function() {
 			this.startTime = new Date().getTime();
 			this.handle = setTimeout(function() {
 				done();
-			}, 500);
+			}, 50);
 		});
 
 		it('should return when the function was first invoked', function() {
