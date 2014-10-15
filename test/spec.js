@@ -130,7 +130,17 @@ describe('a better setTimeout', function() {
 	});
 
 	describe('setTimeout handle.attempted()', function() {
-
+		beforeEach(function(done) {
+			this.handle = setTimeout(function() {
+                done();
+            }, 0);
+		});
+        it('is a function', function() {
+            expect(typeof this.handle.attempted).toBe('function');
+        });
+        it('should return the number of attempts to run the handler', function() {
+            expect(this.handle.attempted()).toBe(1);
+        });
 	});
 
 	describe('setTimeout handle.completed()', function() {

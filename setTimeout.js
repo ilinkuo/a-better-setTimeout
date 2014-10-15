@@ -3,9 +3,10 @@
 	// Why are we calling this interval? Shouldn't it be called delay?
 	var betterST = function(handler, interval, tags, manager) {
 		//var args = Array.prototype.slice.call(arguments, 0);
-		var invokedTime, completedCount = 0;
+		var invokedTime, attemptedCount = 0, completedCount = 0;
 		var rawHandle = setTimeout(function() {
 			invokedTime = new Date().getTime();
+            attemptedCount++;
 			handler();
 			completedCount++;
 		}, interval);
@@ -24,6 +25,9 @@
 			},
 			called: function() {
 				return called;
+			},
+			attempted: function() {
+				return attemptedCount;
 			},
 			completed: function() {
 				return completedCount;
