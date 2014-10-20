@@ -168,7 +168,11 @@ describe('a better setTimeout', function() {
 
     it('should return when the function was actually invoked for the very first time', function(){
 
-    })
+    });
+
+    it('should always be >= firstInvocation', function(){
+
+    });
   });
 
   describe('setTimeout handle.interval()', function() {
@@ -236,7 +240,7 @@ describe('a better setTimeout', function() {
     });
   });
 
-  describe('cooperative behavior between completed, error, and  attempted', function(){
+  describe('invariant relationship between completed, error, and  attempted', function(){
     it('should return attempted=0, error=0, and completed=0 just after calling setTimeout', function(){
 
     });
@@ -246,6 +250,10 @@ describe('a better setTimeout', function() {
     });
 
     it('should return attempted=1, error=1, and completed=0 after unsuccessful invocation', function(){
+
+    });
+
+    it('should obey the invariant relationship attempted + error + completed + (firstActualInvocation > 0 ? 0: 1) === 1', function(){
 
     });
 
