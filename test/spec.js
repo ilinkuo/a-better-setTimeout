@@ -2,9 +2,6 @@ describe('a better setTimeout', function() {
   var NOOP = function() {};
 
   describe('setTimeout.noConflict()', function() {
-    it('is used as an indicator of a better setTimeout', function() {
-      expect(typeof setTimeout.noConflict).toBe('function');
-    });
 
     it('can be called to restore the native setTimeout', function() {
       this.betterST = setTimeout.noConflict();
@@ -19,9 +16,6 @@ describe('a better setTimeout', function() {
   });
 
   describe('setTimeout.yesConflict()', function() {
-    it('is used to restore to a better setTimeout', function() {
-      expect(typeof setTimeout.yesConflict).toBe('function');
-    });
 
     it('can be called to restore a better setTimeout', function() {
       var betterST = setTimeout.noConflict();
@@ -39,6 +33,22 @@ describe('a better setTimeout', function() {
     });
     it('returns a handle that can be used in the native clearTimeout()', function() {
 
+    });
+
+    it('takes arguments of (handler, interval)', function(){
+
+    });
+
+    it('takes argument of (string)', function(){
+
+    });
+
+    it('takes arguments of (handler, interval, param1, param2, ...)', function(){
+
+    });
+
+    it('has unspecified behavior when interval < 0', function(){
+
     })
   });
 
@@ -47,10 +57,16 @@ describe('a better setTimeout', function() {
       this.handle = setTimeout(NOOP, 0);
       done();
     });
+
     it('setTimeout handle has clear method', function() {
       expect(typeof this.handle.clear).toBe('function');
-      console.log(this.handle);
-    })
+      //console.log(this.handle);
+    });
+
+    it('clears the timeout just like the native clearTimeout', function(){
+
+    });
+
   });
 
   describe('setTimeout handle.remove()', function() {
@@ -59,12 +75,15 @@ describe('a better setTimeout', function() {
       this.handle = setTimeout(NOOP, 0);
       done();
     });
+
     it('handle has remove method', function() {
       expect(typeof this.handle.remove).toBe('function');
     });
+
     it('handle.remove is the same as handle.clear', function() {
       expect(this.handle.remove).toBe(this.handle.clear);
-    })
+    });
+
   });
 
   describe('setTimeout handle.called()', function() {
@@ -99,11 +118,29 @@ describe('a better setTimeout', function() {
   });
 
   describe('setTimeout signature change with new optional argument', function() {
+    describe('takes an optional array of string tags as the second argument and returns a valid handle', function(){
+      it('takes (string, array of string tags)', function(){
 
+      });
+
+      it('takes (function, array of tags, interval, param1, param2, ...)', function(){
+
+      })
+    });
   });
 
   describe('setTimeout handle.tag()', function() {
+    it('returns an array of strings', function(){
 
+    });
+
+    it('returns the caller.toString() if no array is passed', function(){
+
+    });
+
+    it('returns the caller.toString() as the first argument if arguments are passed', function(){
+
+    });
   });
 
   describe('setTimeout handle.firstInvocation()', function() {
@@ -114,9 +151,24 @@ describe('a better setTimeout', function() {
       }, 50);
     });
 
-    it('should return when the function was first invoked', function() {
+    it('should return when the function was/is invoked for the very first time', function() {
       expect(this.handle.firstInvocation()).toBeGreaterThan(this.startTime);
     });
+
+    it('should equal handle.called + handle.interval', function(){
+
+    });
+
+  });
+
+  describe('setTimeout handle.firstActualInvocation()', function(){
+    it('should return 0 if the function has not yet been invoked', function(){
+
+    });
+
+    it('should return when the function was actually invoked for the very first time', function(){
+
+    })
   });
 
   describe('setTimeout handle.interval()', function() {
@@ -183,5 +235,20 @@ describe('a better setTimeout', function() {
       expect(this.handle.errors()).toBe(1);
     });
   });
+
+  describe('cooperative behavior between completed, error, and  attempted', function(){
+    it('should return attempted=0, error=0, and completed=0 just after calling setTimeout', function(){
+
+    });
+
+    it('should should return attempted=1, error=0, and completed=1 after successful invocation', function(){
+
+    });
+
+    it('should return attempted=1, error=1, and completed=0 after unsuccessful invocation', function(){
+
+    });
+
+  })
 
 });
