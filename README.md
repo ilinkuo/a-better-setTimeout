@@ -35,3 +35,20 @@ In the home directory, run the tests by
 
 based on the jasmine2 runner at https://github.com/sandermak/jasmine2-junit
 
+MANAGER
+=======
+
+Features:
+	Information:
+		export a JSON list of setXXX
+		Hangs on to executed timeouts for XXX seconds, as specified
+	Interface:
+		setTimeout.manager().json()
+		setTimeout.manager().table() outputs to console.table
+		setTimeout.manager().show() creates an absolutely positioned floating tab which slides out
+	Manipulation:
+		Freeze?
+		rearrange order of executions
+		suspend
+		reexecute
+		run now
